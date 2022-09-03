@@ -4,6 +4,10 @@
 <h2>Django - Helpdesk</h2>
 <p align="center"> Um sistema de helpdesk em Django</p>
 
+ <p align="center">
+  <img alt="GitHub release" src="img/ss2.png">
+</p>
+
 - [Titulo do Projeto](#project-title)
 - [Caracteristicas](#table-of-contents)
 - [Começando](#começando)
@@ -62,12 +66,7 @@ DATABASES = {
  <p align="center">
   <img alt="GitHub release" src="img/ss1.png">
 </p>
-</br>
- <p align="center">
-  <img alt="GitHub release" src="img/ss2.png">
-</p>
  
-
 # License
 [(Back to top)](#license)
 
