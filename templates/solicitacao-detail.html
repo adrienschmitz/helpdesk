@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load humanize %}
+
+{% block content %}
+<!-- solicitacao -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="card-box task-detail">
+                <div class="media mt-0 m-b-30">
+                    <div class="media-body mb-20">
+                        <h5 class="media-heading mb-0 mt-0">{{solicitacao.usuario}}</h5><span class="badge"
+                            style="background: {{solicitacao.status.cor}}; color: white">{{solicitacao.status}}</span><span
+                            class="text-muted ml-2">{{solicitacao.solicitante}} -
+                            {{solicitacao.local}}</span>
+                    </div>
+                </div>
+                <div class="mt-15">
+                    <h6 class="m-b-20">Descrição da solicitação</h6>
+                    <p class="text-muted">{{ solicitacao.descricao }}</p>
+
+                    <ul class="list-inline task-dates m-b-0 mt-5">
+                        <li>
+                            <h6 class="m-b-5">Data</h6>
+                            <p>{{solicitacao.data_criacao|date|naturalday}}<small
+                                    class="text-muted ml-1">{{solicitacao.data_criacao|date:"H:i"}}</small>
+                            </p>
+                        </li>
+                        <li>
+                            <h6 class="m-b-5">Ultima atualização</h6>
+                            <p>{{solicitacao.data_atualizacao|date|naturalday}} <small
+                                    class="text-muted ml-1">{{solicitacao.data_atualizacao|date:"H:i"}}</small></p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="row">
+                    <div style="margin: 15px">
+                        <a class="btn btn-success btn-lg" href="{% url 'solicitacao-update'  solicitacao.id %}"
+                            role="button">Editar</a>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+
+            </div>
+        </div>
+        <!-- end col -->
+        <div class="col-lg-4">
+            {% if respostas %}
+            <div class="card-box">
+                <h6 class="header-title m-b-30">Respostas ({{ respostas.count }})</h6>
+                <div>
+                    <div class="media m-b-20">
+                        <div class="d-flex mr-3">
+                        </div>
+                        <div class="media-body">
+                            {% for resposta in respostas %}
+                            <h5 class="mt-2 d-inline">{{ resposta.usuario.first_name }} </h5><small
+                                class="text-muted  d-inline">{{resposta.data|date:"d F H:i"|naturalday}}</small>
+                            <p class="font-13 text-muted m-15 text-justify"> {{ resposta.resposta }}</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        <!-- end col -->
+    </div>
+    <!-- end row -->
+</div>
+<div class="row pt-5">
+    <div class="col-xl"></div>
+    <div class="col-xl-8">
+        <h5 class="my-3">Deixe uma resposta</h5>
+        {% csrf_token %}
+        {% crispy form %}
+
+
+    </div>
+    <div class="col-xl"></div>
+</div>
+<!-- solicitacao -->
+
+{% endblock %}

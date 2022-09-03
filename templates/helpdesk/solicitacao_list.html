@@ -1,0 +1,63 @@
+{% extends 'base.html'%}
+{% load humanize %}
+
+{% block content %}
+<div class="container">
+    <div class="row ml-1">
+        <div class="col-md-auto bg-light col-2 rounded text-center w-15 h-100">Total<br>
+            <b>{{solictacao_total}}</b>
+        </div>
+        {% for status in status_list %}
+        {% if status.contador == True%}
+        <div class="col-md-auto bg-light col-2 rounded ml-2 text-center w-15 h-100">
+            {{status.nome}}<br>
+            <b>{{status.solicitacao_set.count}}</b>
+        </div>
+        {% endif %} {% endfor %}
+    </div>
+    <div class="row">
+        <div style="margin: 15px">
+            <a class="btn btn-success btn-lg" href="{% url 'solicitacao-add' %}" role="button">Novo
+                chamado</a>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+            {%for solicitacao in object_list%}
+            <a class="link-cards" href="{% url 'solicitacao-detail'  solicitacao.id %}">
+                <div class="card">
+                    <div id="solicitacao" class="card-body"
+                        style="background:  {{solicitacao.status.cor}}; color: white">
+                        <h5 class="card-title">{{solicitacao.data_criacao|naturalday|title}}</h5>
+                        <div style="float:left;">
+                            <p class="card-text">Contato: {{solicitacao.solicitante.nome}}</p>
+                            <p class="card-text">Solicitação para: {{solicitacao.usuario.first_name}}</p>
+                        </div>
+                        <div style="float:right;">
+                            {% if solicitacao.patrimonio %}
+                            <p class="card-text">Patrimonio: {{solicitacao.patrimonio}}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+            </a>
+
+        </div>
+        <div class="col-sm-3">
+            <div class="card sticky-top">
+                <ul class="list-group list-group-flush">
+                    {% for status in status_list %}
+                    <li class="list-group-item" style="background:  {{status.cor}}; color: white">
+                        {{status.nome}}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

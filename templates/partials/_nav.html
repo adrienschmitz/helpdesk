@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="/">PROJEÇÃO WEBDESK</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/admin">Adminitrativo </a>
+                </li>
+
+            </ul>
+            <form class="form-inline my-2 my-lg-0 ml-lg-4" action="{% url 'solicitacao_busca' %}">
+                <input name="termo" value="{{ request.GET.termo }}" class="form-control mr-sm-2" type="search"
+                    placeholder="Pesquisar" aria-label="Search">
+            </form>
+            <div class="nav-link">
+
+            </div>
+            <div class="nav-link">
+                <div>
+                    {% if user.is_authenticated %}
+                    <a href="/admin/auth/user/{{user.id}}/change/"><span
+                            style="color:white">{{ user.first_name }}</span></a>
+                    <a style="color:white" href="{% url 'logout'%}?next={{request.path}}">| Sair</a>
+                    {% else %}
+                    <a style="color:white" href="{% url 'login'%}?next={{request.path}}">Login</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+{% if form.errors %}
+<p>Usuário ou senha não encontrada. Tente novamente.</p>
+{% endif %}
+
+{% if next %}
+{% if user.is_authenticated %}
+<p>Sua conta não tem acesso a esta pagina. Para continuar,
+    faça login com uma conta que tem esse acesso.</p>
+{% else %}
+<p>Área restrita</p>
+{% endif %}
+{% endif %}
+
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100">
+
+            <form method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+                <table>
+                    <tr>
+                        <td>{{ form.username.label_tag }}</td>
+                        <td>{{ form.username }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ form.password.label_tag }}</td>
+                        <td>{{ form.password }}</td>
+                    </tr>
+                </table>
+                <input type="submit" value="login" />
+                <input type="hidden" name="next" value="{{ next }}" />
+            </form>
+
+
+            <div class="login100-more" style="background-image: url('/static/images/bg-01.jpg');">
+            </div>
+        </div>
+    </div>
+</div>
+
+{# Assumes you setup the password_reset view in your URLconf #}
+<p><a href="{% url 'password_reset' %}">Esqueceu a senha?</a></p>
+
+
+{% endblock %}
