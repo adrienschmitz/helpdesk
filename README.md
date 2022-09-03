@@ -1,4 +1,5 @@
 # Titulo do Projeto
+[(Back to top)](#project-title)
 
 <h2>Django - Helpdesk</h2>
 <p align="center"> Um sistema de helpdesk em Django</p>
@@ -6,8 +7,8 @@
 - [Titulo do Projeto](#project-title)
 - [Caracteristicas](#table-of-contents)
 - [Começando](#começando)
-- [Tecnologias](#table-of-contents))
-- [Screenshots](#table-of-contents))
+- [Tecnologias](#tecnologias))
+- [Screenshots](#screenshots))
 - [License](#license)
 - [Footer](#footer)
 
@@ -51,10 +52,12 @@ DATABASES = {
     - Para acessar o admin: //127.0.0.1:8000/admin
 
 # Tecnologias
+[(Back to top)](#tecnologias)
 
 -[Python] (<a href="https://www.python.org/" rel="nofollow">https://www.python.org/</a>)<br/> -[Django] (<a href="https://www.djangoproject.com/" rel="nofollow">https://www.djangoproject.com/</a>)<br/> -[Postgres] (<a href="https://www.postgresql.org/" rel="nofollow">https://www.postgresql.org/</a>)
 
 # Screenshots
+[(Back to top)](#screenshots)
 
  <p align="center">
   <img alt="GitHub release" src="img/ss1.png">
@@ -66,11 +69,11 @@ DATABASES = {
  
 
 # License
-[(Back to top)](#table-of-contents)
+[(Back to top)](#license)
 
 <a href="LICENSE.md">MIT</a>
  
 # Footer
-[(Back to top)](#table-of-contents)
+[(Back to top)](#footer)
 
 <img style="border-radius: 50%;" src="img/adrien_logo.png" alt=""/>
